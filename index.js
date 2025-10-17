@@ -11,24 +11,27 @@
  * - containsDuplicate([1,1,1,3,3,4,3,2,4,2]) → true
  */
 
-const containsDuplicate = (nums) => {
-  const seen = []; // we'll store numbers we've encountered
+function containsDuplicate(nums) {
+  const frequency = {};
 
   for (let i = 0; i < nums.length; i++) {
-    const current = nums[i];
+    const num = nums[i];
 
-    // check if the number is already in 'seen'
-    if (seen.includes(current)) {
-      return true; // duplicate found
+    if (frequency[num]) {
+      frequency[num]++; // increment count by 1
+    } else {
+      // otherwise, initialize its count to 1
+      frequency[num] = 1;
     }
 
-    // if not, add it to 'seen'
-    seen.push(current);
+    // If any number’s count is 2 or more, it's a duplicate
+    if (frequency[num] >= 2) {
+      return true;
+    }
   }
 
-  // if we finish looping with no duplicates found
+  // if loop finishes, all elements were distinct
   return false;
-
 };
 
 // Export the function for testing
