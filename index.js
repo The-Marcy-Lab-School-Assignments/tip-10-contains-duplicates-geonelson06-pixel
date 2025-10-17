@@ -12,16 +12,22 @@
  */
 
 const containsDuplicate = (nums) => {
-  const seen = new Set();
+  const seen = []; // we'll store numbers we've encountered
 
-  for (const num of nums) {
-    if (seen.has(num)) {
+  for (let i = 0; i < nums.length; i++) {
+    const current = nums[i];
+
+    // check if the number is already in 'seen'
+    if (seen.includes(current)) {
       return true; // duplicate found
     }
-    seen.add(num); // remember this number for later
+
+    // if not, add it to 'seen'
+    seen.push(current);
   }
 
-  return false; // no duplicates found
+  // if we finish looping with no duplicates found
+  return false;
 
 };
 
