@@ -12,7 +12,17 @@
  */
 
 const containsDuplicate = (nums) => {
-  //write your code here
+  const seen = new Set();
+
+  for (const num of nums) {
+    if (seen.has(num)) {
+      return true; // duplicate found
+    }
+    seen.add(num); // remember this number for later
+  }
+
+  return false; // no duplicates found
+
 };
 
 // Export the function for testing
